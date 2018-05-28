@@ -192,7 +192,7 @@ namespace NexDirect.Management
                     File.Move(download.TempPath, path);
                 }
 
-                AudioManager.PlayWavBytes(DownloadCompleteSound, 0.85f);
+                AudioManager.PlayWavBytes(DownloadCompleteSound, (float)SettingManager.Get("previewVolume"));
 
                 (new Dialogs.DownloadComplete(set)).Show();
             }

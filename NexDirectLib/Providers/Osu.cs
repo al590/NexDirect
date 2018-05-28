@@ -58,6 +58,9 @@ namespace NexDirectLib.Providers
                     throw new InvalidPasswordException();
                 response.EnsureSuccessStatusCode();
 
+                // Workaround for the new site design
+                handler.CookieContainer.Add(new Cookie("osu_site_v", "old", "/", ".ppy.sh"));
+
                 return handler.CookieContainer;
             }
         }
