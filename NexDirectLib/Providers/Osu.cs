@@ -144,7 +144,7 @@ namespace NexDirectLib.Providers
             using (var client = new HttpClient(handler))
             {
                 var rawData = await client.GetStringAsync("https://osu.ppy.sh/beatmapsets/search?" + qs.ToString());
-                var data = JsonConvert.DeserializeObject<JArray>(rawData);
+                var data = JsonConvert.DeserializeObject<JObject>(rawData).Value<JArray>("beatmapsets");
                 var standardized = data.Select(b => StandardizeToSetStruct((JObject)b));
                 int count = standardized.Count();
 
